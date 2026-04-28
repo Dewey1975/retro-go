@@ -25,7 +25,7 @@ jobs:
     - name: Build Rachel Image
       run: |
             mkdir -p build
-            docker run --rm -v $(pwd)/build:/build retro-go:latest sh -c "./rg_tool.py --target=rachel clean && ./rg_tool.py --target=rachel build && cp output/retro-go_rachel.img /build/"
+            run: docker run --rm retro-go:latest ./rg_tool.py --target=rachel build
             
 
 
