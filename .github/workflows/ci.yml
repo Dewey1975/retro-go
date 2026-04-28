@@ -18,12 +18,3 @@ jobs:
           name: Rachel_Build
           path: build/
 
-            
-
-
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: binaries
-        path: build/*
-
