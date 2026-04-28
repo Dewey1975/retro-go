@@ -26,8 +26,7 @@ jobs:
       run: docker build --build-arg TARGET=rachel --build-arg BOARDS=rachel -t retro-go:latest .
        
     - name: Extract binaries from docker image
-      run: |
-           docker run --rm -v $(pwd)/build:/build retro-go:latest sh -c "find / -name '*rachel*.img' -exec cp {} /build \;"
+      run: docker run --rm retro-go:latest find /app -name "*.img"
 
 
     - name: Upload artifacts
