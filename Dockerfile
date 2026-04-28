@@ -1,4 +1,6 @@
 FROM espressif/idf:release-v4.4
+ARG TARGET=rachel
+ENV IDF_TARGET=esp32s3
 
 WORKDIR /app
 
@@ -13,6 +15,5 @@ RUN cd /opt/esp/idf && \
 
 # Build
 SHELL ["/bin/bash", "-c"]
-RUN . /opt/esp/idf/export.sh && \
-	python rg_tool.py --target=odroid-go release && \
-	python rg_tool.py --target=mrgc-g32 release
+RUN . /opt/esp/idf/export.sh && \ 
+python rg_tool.py --target=rachel build launcher
