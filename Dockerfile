@@ -1,5 +1,5 @@
 FROM espressif/idf:release-v4.4
-ARG TARGET=rachel
+ARG TARGET=rachel-esp32
 ENV IDF_TARGET=esp32s3
 WORKDIR /app
 COPY . .
