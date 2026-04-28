@@ -23,17 +23,11 @@ jobs:
       uses: docker/setup-buildx-action@v3
 
     - name: Build
-      uses: docker/build-push-action@v6
-      with:
-        context: .
-        tags: retro-go:latest
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        load: true
+      run: docker build --build-arg TARGET=rachel -t retro-go:latest .
 
     - name: Extract binaries from docker image
       run: |
-        docker run --rm -v $(pwd)/build:/build retro-go:latest sh -c "cp /app/*.fw /build"
+        docker run --rm -v $(pwd)/build:/build retro-go:latest sh -c "cp /app/output/*.img /build"
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
