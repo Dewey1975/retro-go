@@ -27,7 +27,7 @@ jobs:
 
     - name: Extract binaries from docker image
       run: |
-        docker run --rm -v $(pwd)/build:/build retro-go:latest sh -c "cp /app/output/*.img /build"
+        docker run --rm -v $(pwd)/build:/build retro-go:latest sh -c "cp /app/*.img /build || cp /app/output/*.img /build"
 
     - name: Upload artifacts
       uses: actions/upload-artifact@v4
