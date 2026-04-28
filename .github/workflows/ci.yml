@@ -1,11 +1,16 @@
-name: Build Rachel
-on: [push, pull_request]
+name: Build-Rachel
+on:
+  push:
+    branches:
+      - main
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - name: Build and Extract
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build
         run: |
           mkdir -p build
           docker build --build-arg TARGET=rachel -t retro-go:latest .
@@ -17,4 +22,3 @@ jobs:
         with:
           name: Rachel_Build
           path: build/
-
